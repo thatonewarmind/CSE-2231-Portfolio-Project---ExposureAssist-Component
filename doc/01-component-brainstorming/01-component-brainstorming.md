@@ -1,12 +1,12 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Aadit Bhatia
+- **Dot Number**: bhatia.215
+- **Due Date**: 2/6 @ 4:10PM
 
 ## Assignment Overview
 
-<!-- TODO: read the assignment overview then delete this comment -->
+
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,7 +29,7 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
+
 
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
@@ -52,7 +52,7 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
+
 
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
@@ -67,7 +67,7 @@ project. Specifically, students should be able to:
 
 ## Assignment Rubric: 10 Points
 
-<!-- TODO: read the assignment rubric then delete this comment -->
+
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -106,15 +106,14 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+
+
+>In terms of my personal hobbies, I'm really interested in photography and hiking. I also like going to the gym and playing video games as well.
+>In terms of my career goals, I want to enter the cybersecurity industry as a developer post-undergrad and then eventually integrate into the IT field for management. I'd also like to get my MBA through a company at some point
 
 ## Assignment
 
-<!-- TODO: read the assignment section then delete this comment -->
+
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
@@ -122,7 +121,7 @@ that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
 
-<!-- TODO: browse the list of possible projects then delete this comment -->
+
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -143,7 +142,7 @@ about different ways you might allow a client to manipulate your component.
 
 ### Example Component
 
-<!-- TODO: review this example component then delete this comment -->
+
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -211,68 +210,84 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: ExposureAssist
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The purpose of this component is to take into account multiple different parts of the "exposure triangle" like aperture, ISO, and shutter speed in order to create guidelines for the user on which combinations of these settings works in specific areas.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void setAperture(double fStop): sets the N value in the exposure value formula
+    - void setShutterSpeed(double seconds): sets the T value in the exposure value formula
+    - NOTE: seconds is stored as a double because shutter speed is represented in fractions
+    - void setISO(int isoVal): sets the sensitivity in the exposure value formula
+    - void getAperture(), void getShutterSpeed, void getISO(): all observer methods so others can see current values
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - double calculateEV(): uses the standard EV formula to find "brightness" of current settings. this boils our three numbers into a single representation of how much light will be in the image.
+    -double getLikelihood(SceneType scene): returns a score representing how suitable the EV value is for inputted scenes(landscape, macro, portrait, etc)
+    - void balanceVals(int targetEV): if a user gives a targetEV and already inputted settings, this method will tell the user what values to adjust to reach targetEV
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it's so much easier to modify an existing ExposureAssist object than it is to initialize an entirely new one just to change a single value like aperture
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, there are a few instances in which creating a class to prevent logical mishaps would be useful. For example, aperture can't typically go below f/0.5 on most lenses, so creating an internal class to check if an inputted fStop is possible helps avoid inaccuracy.
+      - Shutter speeds are also represented best as fractions(1/500), so creating a Fraction class could help avoid inaccuracies in fraction-to-decimal conversion that you see with double
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, for the SceneType type, we would need to create an enum that has the different types of scenes that you can shoot.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I'm not sure.
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: MusicPlaylist
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The purpose of this component is to model a standard music playlist found on most streaming services. It will provide the foundation for managing a queue of songs, allowing for manipulation of song order, managing playback, and tracking current playing songs.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void add(Song s): adds a song to the end of the playlist order
+    - Song remove(int index): removes the song at the specified index and returns it
+    - int length(): returns the # of songs in a queue
+    - Song songAt(int index): a method that allows us to look at a song in an index without removing it.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - void shuffle(): would use remove() and add() in a randomized order to shuffle the playlist(I don't know how "random" java's Randint actually is, this is easier on Python)
+    - void moveNext(boolean loop): advances the current song to give effect of "playing" song thru the end. Once reached the end(loop is true), index resets to 0
+    - Playlist filterGenre(String genre): returns a new playlist type object containing only songs that match the inputted genre
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, doesn't make sense to not be able to change a playlist
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I don't know
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, an enum for playback modes and an enum for genres would be helpful
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Some can, for example shuffle() can theoretically be implemented with add and remove.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: NeuronDesign
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This component is designed to model a single unit within a neural network, and study how input signals translagte into output signals
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void setWeight(int index, double value): Sets the weight at a specific index's input connection
+    - void setBias(double b): sets the bias value for the neuron
+    - double getWeight(), double getBias(): observer methods to retrieve values
+    - int inputConnections(): returns how many connections a specific unit has
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - double calculateActivation(double[] inputs): calculates the weighted sum with a predefined formula by using kernel getters
+    - void updateParameters(double[] gradients, double learningRate): adjusts weight and bias based on errors, using setWeight and setBias for the changes to be applied
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. While training a neural network, you have to update weight and bias values countless times. If this wasn't mutable, your computer would likely crash from the amount of RAM allocation needed for the object creation
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I dont know
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, an enum for Activation functions, but I need to definetly study this more to figure out the scope of how many options i want to give
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I think? calculateActivation takes observers to function
 
 ## Post-Assignment
 
@@ -281,7 +296,7 @@ completed the assignment.
 
 ### Changelog
 
-<!-- TODO: create CHANGELOG then delete this comment -->
+
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
