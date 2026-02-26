@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## [2026.02.26]
+
+## Added
+-Decided to move ahead with ExposureAssist as the working design
+-Created a Minimum Viable Product for the ExposureAssist Component
+
+
+
+
 ## [2026.02.02]
 
 - Created high-level design plan for ExposureAssist component
