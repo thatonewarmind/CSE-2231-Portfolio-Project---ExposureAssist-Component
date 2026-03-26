@@ -114,8 +114,7 @@ Below is further rationale/explanation for the rubric items above:
 > to create a new design. In you do end up picking one at random, you should
 > disclose that here as well.
 
-<!-- TODO: briefly argue your choice of design or design something
-new; then delete this comment -->
+> I chose to go ahead with creating a fully fleshed out product of the ExposureAssist design because I think it would solve a big problem in mindset that a lot of photographers have; the mindset that better gear is what gives you better pictures. A lot of people don't have fundamental understandings of things like the exposure triangle, metering, framing, etc, and they compensate with that by buying very expensive gear, but that obviously won't help when you don't know how to use it. This program should help get people on their feet and actually learn the concepts behind what makes a photo great.
 
 > Once you've argued your choice of design, make a branch in your new repo called
 > something like `proof-of-concept`. There are many ways to do this, but my
@@ -126,7 +125,7 @@ new; then delete this comment -->
 > we'll want a branch that you can later make a pull request from with all
 > your changes.
 
-<!-- TODO: make a new branch from main then delete this comment -->
+
 
 ## Assignment Tasks
 
@@ -153,7 +152,7 @@ completed the assignment.
 
 ### Changelog
 
-<!-- TODO: update CHANGELOG then delete this comment -->
+
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -172,7 +171,7 @@ the following form: YYYY.0M.0D.
 
 ### Added
 
-- Designed a proof of concept for <!-- insert name of component here --> component
+- Designed a proof of concept for ExposureAssist component
 
 ### Updated
 
