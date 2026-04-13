@@ -1,4 +1,6 @@
 //Not implementing hashCode and equals methods because it doesn't make sense
+//You wouldn't need to have multiple of these objects working at a time, there's not much reason to compare them using equals or store them in a set using hashCode.
+//Component is meant to be a "one and done", where the object can be discarded or wiped clean after each use, storing the values long-term isn't necessary
 
 abstract class ExposureAssistSecondary implements ExposureAssist {
     @Override
