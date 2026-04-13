@@ -1,23 +1,3 @@
-interface ExposureAssistKernel {
-    void setAperture(double fStop);
-
-    void setShutterSpeed(int num, int den);
-
-    void setISO(int isoVal);
-
-    double aperture();
-
-    double shutterSpeed();
-
-    int iso();
-}
-
-interface ExposureAssist extends ExposureAssistKernel {
-    double calculateEV();
-
-    void displayBalanceAdvice(int targetEV, SimpleWriter out);
-}
-
 abstract class ExposureAssistSecondary implements ExposureAssist {
     @Override
     public double calculateEV() {
@@ -52,75 +32,5 @@ abstract class ExposureAssistSecondary implements ExposureAssist {
         } else {
             out.println("Settings are optimal for your target EV");
         }
-    }
-}
-
-final class ExposureAssist1 extends ExposureAssistSecondary {
-
-    private double aperture;
-    private double shutterSpeed;
-    private int iso;
-
-    public ExposureAssist1() {
-        this.aperture = 8.0;
-        this.shutterSpeed = 1.0 / 125.0;
-        this.iso = 100;
-    }
-
-    @Override
-    public void setAperture(double fStop) {
-        assert fStop >= 0.5 && fStop <= 64.0 : "Violation of: fStop range";
-        this.aperture = fStop;
-    }
-
-    @Override
-    public void setShutterSpeed(int num, int den) {
-        assert num > 0 && den > 0 : "Violation of: positive fraction";
-        this.shutterSpeed = (double) num / den;
-    }
-
-    @Override
-    public void setISO(int isoVal) {
-        assert isoVal > 0 && isoVal <= 204800 : "Violation of: isoVal > 0";
-        this.iso = isoVal;
-    }
-
-    @Override
-    public double aperture() {
-        return this.aperture;
-    }
-
-    @Override
-    public double shutterSpeed() {
-        return this.shutterSpeed;
-    }
-
-    @Override
-    public int iso() {
-        return this.iso;
-    }
-}
-
-public final class ExposureAssistDemo {
-
-    private ExposureAssistDemo() {
-    }
-
-    public static void main(String[] args) {
-        SimpleReader in = new SimpleReader1L();
-        SimpleWriter out = new SimpleWriter1L();
-
-        ExposureAssist ea = new ExposureAssist1();
-
-        out.println("--- ExposureAssist v1 ---");
-        out.println("Initial EV: " + ea.calculateEV());
-
-        out.print("Enter target EV: ");
-        int target = in.nextInteger();
-
-        ea.displayBalanceAdvice(target, out);
-
-        in.close();
-        out.close();
     }
 }
