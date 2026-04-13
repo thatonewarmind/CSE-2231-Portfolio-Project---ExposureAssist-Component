@@ -1,3 +1,5 @@
+//Not implementing hashCode and equals methods because it doesn't make sense
+
 abstract class ExposureAssistSecondary implements ExposureAssist {
     @Override
     public double calculateEV() {
@@ -32,5 +34,12 @@ abstract class ExposureAssistSecondary implements ExposureAssist {
         } else {
             out.println("Settings are optimal for your target EV");
         }
+    }
+
+    @Override
+    public string toString() {
+        String result = "(" + this.aperture() + ", " + this.shutterSpeed()
+                + ", " + this.iso() + ")";
+        return result;
     }
 }
