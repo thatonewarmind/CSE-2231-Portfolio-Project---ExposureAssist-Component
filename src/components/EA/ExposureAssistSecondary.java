@@ -1,17 +1,21 @@
+package components.EA;
 //Not implementing hashCode and equals methods because it doesn't make sense
+
 //You wouldn't need to have multiple of these objects working at a time, there's not much reason to compare them using equals or store them in a set using hashCode.
 //Component is meant to be a "one and done", where the object can be discarded or wiped clean after each use, storing the values long-term isn't necessary
 
-abstract class ExposureAssistSecondary implements ExposureAssist {
+import components.simplewriter.SimpleWriter;
+
+public abstract class ExposureAssistSecondary implements ExposureAssist {
     @Override
-    public double calculateEV() {
+    public final double calculateEV() {
         final double standardISO = 100.0;
         return Math.log((Math.pow(this.aperture(), 2) / this.shutterSpeed())
                 * (standardISO / this.iso())) / Math.log(2);
     }
 
     @Override
-    public void displayBalanceAdvice(int targetEV, SimpleWriter out) {
+    public final void displayBalanceAdvice(int targetEV, SimpleWriter out) {
         double currentEV = this.calculateEV();
         double diff = targetEV - currentEV;
 
@@ -39,7 +43,7 @@ abstract class ExposureAssistSecondary implements ExposureAssist {
     }
 
     @Override
-    public string toString() {
+    public final String toString() {
         String result = "(" + this.aperture() + ", " + this.shutterSpeed()
                 + ", " + this.iso() + ")";
         return result;

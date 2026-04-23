@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
-the following form: YYYY.0M.0D.
+the following form: YYYY.0M.0D. ##[2026.04.13]
+
+## [2026.04.23]
+
+## Added
+
+-Created 2 demo use cases for the component ExposureAssist
+-Cleaned up the kernel implementation and abstract class a bit
+-Organized GitHub repo to better reflect the OSU CSE style.
 
 ## [2026.04.13]
 
