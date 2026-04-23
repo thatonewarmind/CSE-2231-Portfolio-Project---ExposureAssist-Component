@@ -1,3 +1,5 @@
+package components.EA;
+
 import components.simplewriter.SimpleWriter;
 
 /**

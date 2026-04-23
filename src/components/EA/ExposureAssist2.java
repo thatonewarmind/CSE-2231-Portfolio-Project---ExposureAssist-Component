@@ -1,6 +1,7 @@
-import java.util.HashMap;
-import java.util.Map;
+package components.EA;
 
+import components.map.Map;
+import components.map.Map1L;
 import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
 
@@ -76,10 +77,10 @@ public class ExposureAssist2 extends ExposureAssistSecondary {
      * </pre>
      */
     private void createNewRep() {
-        this.rep = new HashMap<String, Double>();
-        this.rep.put(KEY_APERTURE, 8.0);
-        this.rep.put(KEY_SHUTTER, 1.0 / 250.0);
-        this.rep.put(KEY_ISO, 100.0);
+        this.rep = new Map1L<String, Double>();
+        this.rep.add(KEY_APERTURE, 8.0);
+        this.rep.add(KEY_SHUTTER, 1.0 / 250.0);
+        this.rep.add(KEY_ISO, 100.0);
     }
 
     /*
@@ -121,9 +122,9 @@ public class ExposureAssist2 extends ExposureAssistSecondary {
         assert isoVal >= 1 && isoVal <= 204800 : "Violation of: isoVal range";
 
         this.createNewRep();
-        this.rep.put(KEY_APERTURE, fStop);
-        this.rep.put(KEY_SHUTTER, (double) shutterNum / shutterDen);
-        this.rep.put(KEY_ISO, (double) isoVal);
+        this.rep.replaceValue(KEY_APERTURE, fStop);
+        this.rep.replaceValue(KEY_SHUTTER, (double) shutterNum / shutterDen);
+        this.rep.replaceValue(KEY_ISO, (double) isoVal);
     }
 
     /*
@@ -176,7 +177,7 @@ public class ExposureAssist2 extends ExposureAssistSecondary {
     @Override
     public final void setAperture(double fStop) {
         assert fStop >= 0.5 && fStop <= 64.0 : "Violation of: fStop range";
-        this.rep.put(KEY_APERTURE, fStop);
+        this.rep.replaceValue(KEY_APERTURE, fStop);
     }
 
     /**
@@ -193,7 +194,7 @@ public class ExposureAssist2 extends ExposureAssistSecondary {
     @Override
     public final void setShutterSpeed(int num, int den) {
         assert num > 0 && den > 0 : "Violation of: positive shutter fraction";
-        this.rep.put(KEY_SHUTTER, (double) num / den);
+        this.rep.replaceValue(KEY_SHUTTER, (double) num / den);
     }
 
     /**
@@ -208,7 +209,7 @@ public class ExposureAssist2 extends ExposureAssistSecondary {
     @Override
     public final void setISO(int isoVal) {
         assert isoVal >= 1 && isoVal <= 204800 : "Violation of: isoVal range";
-        this.rep.put(KEY_ISO, (double) isoVal);
+        this.rep.replaceValue(KEY_ISO, (double) isoVal);
     }
 
     /**
@@ -219,7 +220,7 @@ public class ExposureAssist2 extends ExposureAssistSecondary {
      */
     @Override
     public final double aperture() {
-        return this.rep.get(KEY_APERTURE);
+        return this.rep.value(KEY_APERTURE);
     }
 
     /**
@@ -230,7 +231,7 @@ public class ExposureAssist2 extends ExposureAssistSecondary {
      */
     @Override
     public final double shutterSpeed() {
-        return this.rep.get(KEY_SHUTTER);
+        return this.rep.value(KEY_SHUTTER);
     }
 
     /**
@@ -241,7 +242,7 @@ public class ExposureAssist2 extends ExposureAssistSecondary {
      */
     @Override
     public final int iso() {
-        return this.rep.get(KEY_ISO).intValue();
+        return this.rep.value(KEY_ISO).intValue();
     }
 
     /*

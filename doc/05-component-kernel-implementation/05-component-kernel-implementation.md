@@ -1,8 +1,8 @@
 # Portfolio Part 5: Kernel Implementation
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) and delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) and delete this comment -->
-- **Due Date**: <!-- TODO: fill out with due date and time (e.g., 10/17 @ 3:10 PM EST) and delete this comment -->
+- **Name**: Aadit Bhatia
+- **Dot Number**: bhatia.215
+- **Due Date**: 4/15 @ 4:10 PM
 
 ## Assignment Overview
 
